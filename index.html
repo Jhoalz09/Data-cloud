@@ -162,38 +162,41 @@
         </form>
     </div>
 
-    <script src="https://cdn.pc-rnd.c360a.salesforce.com/beacon/c360a/c93b7074-5f07-446f-b787-ca33d3abfeef/scripts/c360a.min.js" async></script>
+<!-- SDK Data Cloud -->
+<script src="https://cdn.pc-rnd.c360a.salesforce.com/beacon/c360a/c93b7074-5f07-446f-b787-ca33d3abfeef/scripts/c360a.min.js" async></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Vérifier que le SDK est chargé
-  if (window.c360a) {
-    // Exemple d'initialisation basique (à adapter selon tes besoins)
-    window.c360a('init', {
-      // Remplace ces champs par ta config (si besoin)
-      orgId: 'votreOrgId',
-      // ...d’autres options ici selon la doc du SDK
-    });
-
-    // Exemple de tracking d’un événement formulaire
-    const form = document.querySelector('form');
-    if(form) {
-      form.addEventListener('submit', function(event) {
-        // Ici, tu déclenches un event vers Data Cloud
-        window.c360a('track', 'form_submit', {
-          civilite: document.querySelector('input[name="civilite"]:checked')?.value || '',
-          prenom: document.getElementById('prenom').value,
-          nom: document.getElementById('nom').value,
-          email: document.getElementById('email').value,
-          structure: document.getElementById('structure').value
-        });
-        // Optionnel : laisser le submit se faire ou empêcher pour test
-        // event.preventDefault();
+  function initC360A() {
+    if (window.c360a) {
+      // Initialisation du SDK avec ton orgId
+      window.c360a('init', {
+        orgId: '00Dd10000030IJN'
       });
+
+      // Tracking de la soumission du formulaire
+      const form = document.querySelector('form');
+      if(form) {
+        form.addEventListener('submit', function(event) {
+          const formData = {
+            civilite: document.querySelector('input[name="civilite"]:checked')?.value || '',
+            prenom: document.getElementById('prenom').value,
+            nom: document.getElementById('nom').value,
+            email: document.getElementById('email').value,
+            structure: document.getElementById('structure').value
+          };
+          // Log dans la console pour debug
+          console.log("Données envoyées à Data Cloud :", formData);
+
+          // Envoie l'événement à Data Cloud
+          window.c360a('track', 'form_submit', formData);
+        });
+      }
+    } else {
+      // Si le SDK n'est pas encore chargé, réessaye dans 200ms
+      setTimeout(initC360A, 200);
     }
-  } else {
-    // Si le SDK n'est pas encore chargé, attendre un peu (rare cas)
-    console.log("SDK Data Cloud non chargé");
   }
+  initC360A();
 });
 </script>
 
