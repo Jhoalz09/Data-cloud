@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Téléchargez gratuitement le livre blanc</title>
+    <style>
+        body {
+            background: #faede6;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #232323;
+        }
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: #faede6;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 24px;
+            color: #1a2329;
+        }
+        .desc {
+            text-align: center;
+            font-size: 1.15em;
+            margin-bottom: 40px;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+        .form-group {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            border: none;
+            border-bottom: 2px solid #232323;
+            background: transparent;
+            padding: 10px 5px;
+            font-size: 1em;
+            outline: none;
+            margin-bottom: 4px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .radio-label {
+            font-weight: normal;
+            margin-left: 4px;
+            margin-right: 18px;
+        }
+        .consent-group {
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .consent-group input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            accent-color: #2d3136;
+        }
+        .submit-btn {
+            display: block;
+            width: 340px;
+            margin: 40px auto 0 auto;
+            padding: 18px 0;
+            background: #ffc069;
+            color: #232323;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .submit-btn:hover {
+            background: #ffb246;
+        }
+        @media (max-width: 800px) {
+            .container {
+                padding: 18px;
+            }
+            form {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-group {
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Téléchargez gratuitement le livre blanc des Experts SVP</h1>
+        <p class="desc">
+            Pour télécharger notre livre blanc veuillez renseigner quelques informations personnelles
+        </p>
+        <form>
+            <div class="form-group" style="flex-basis:100%">
+                <label>Civilité</label>
+                <div class="radio-group">
+                    <input type="radio" id="mme" name="civilite" value="Mme">
+                    <label for="mme" class="radio-label">Mme</label>
+                    <input type="radio" id="mr" name="civilite" value="M.">
+                    <label for="mr" class="radio-label">M.</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse mail professionnelle</label>
+                <input type="email" id="email" name="email" placeholder="Entrez votre adresse mail ici" required>
+            </div>
+            <div class="form-group">
+                <label for="structure">Structure</label>
+                <select id="structure" name="structure" required>
+                    <option value="">Vous êtes...</option>
+                    <option value="Entreprise">Entreprise</option>
+                    <option value="Indépendant">Indépendant</option>
+                    <option value="Particulier">Particulier</option>
+                    <option value="Etudiant">Étudiant</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-group" style="flex-basis:100%">
+                <div class="consent-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">J'accepte le traitement de mes données par SVP</label>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">
+                Téléchargez le document &#128433;
+            </button>
+        </form>
+    </div>
+</body>
+</html>
