@@ -170,7 +170,9 @@
   </script>
 
   <script>
+    console.log('Script principal chargé');
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM entièrement chargé');
       function initC360A() {
         if (window.c360a) {
           console.log('c360a est disponible → init');
@@ -195,12 +197,18 @@
             };
 
             console.log("Données prêtes à partir →", formData);
-            window.c360a('track', 'form_submit', formData);
+            if (window.c360a) {
+              window.c360a('track', 'form_submit', formData);
+              console.log('Track appelé');
+            } else {
+              console.error('c360a non disponible lors de la soumission');
+            }
 
             // Pour réactiver la soumission normale, décommente :
             // form.submit();
           });
         } else {
+          console.warn('c360a non encore disponible, nouvelle tentative dans 200ms');
           setTimeout(initC360A, 200);
         }
       }
